@@ -1,9 +1,12 @@
 package com.chat.client;
 
+import com.chat.client.bundels.Resources;
 import com.chat.client.presenters.impl.MainPresenterImpl;
 import com.chat.shared.ChatServiceAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.StyleInjector;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -16,11 +19,17 @@ public class Chat implements EntryPoint {
     SimplePanel container = new SimplePanel();
     private ChatServiceAsync chatService;
 
+    static {
+        Resources.IMPL.basic().ensureInjected();
+    }
+
     @Override
     public void onModuleLoad() {
 
         clientFactory = GWT.create(ClientFactory.class);
         chatService = clientFactory.getChatServices();
+        container.setHeight("100%");
+        container.setWidth("100%");
         RootPanel.get().add(container, 0, 0);
         bind();
 
@@ -33,6 +42,22 @@ public class Chat implements EntryPoint {
     }
 
     private void bind() {
+        chatService.getUsername(new AsyncCallback<String>() {
+            @Override
+            public void onSuccess(String username) {
+                if (username == null) {
+                    //showLogonDialog();
+                }
+                else {
+                    //loggedOn(username);
+                }
+            }
 
+            @Override
+            public void onFailure(Throwable caught) {
+                //output(caught.toString(), "red");
+                //showLogonDialog();
+            }
+        });
     }
 }

@@ -1,5 +1,5 @@
 package com.chat.client.presenters;
 
 public interface MainPresenter {
-	public void onshowPhotosButtonClicked();
+	public void onShowMainButtonClicked();
 }

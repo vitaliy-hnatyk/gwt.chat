@@ -3,7 +3,7 @@
 
 	<inherits name='com.google.gwt.user.User' />
     <inherits name="com.google.gwt.rpc.RPC" />
-	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+
     <replace-with class="com.chat.client.ClientFactoryImpl">
        <when-type-is class="com.chat.client.ClientFactory"/>
     </replace-with>
@@ -11,5 +11,8 @@
 	<entry-point class='com.chat.client.Chat' />
 	<source path='client' />
     <source path='shared'/>
-    <
+    <public path="public" />
+
+    <stylesheet src="normalize.css"/>
+    <stylesheet src="chat.css"/>
 </module>

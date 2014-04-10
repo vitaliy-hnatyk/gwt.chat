@@ -21,11 +21,12 @@ public class MainPresenterImpl implements MainPresenter {
 	}
 
 	public void go(final HasWidgets container) {
-		container.clear();
+		//container.clear();
 		container.add(mainView.asWidget());
+
 	}
 
-	public void onshowPhotosButtonClicked() {
+	public void onShowMainButtonClicked() {
 		History.newItem(Tokens.LIST);
 	}
 }

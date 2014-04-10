@@ -11,6 +11,7 @@ import static com.chat.shared.StatusUpdate.Status;
 
 @RemoteServiceRelativePath("chat")
 public interface ChatService extends RemoteService {
+
     public String getUsername() throws ChatException;
 
     public void login(String username) throws ChatException;

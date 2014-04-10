@@ -1,0 +1,95 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        @external .gwt-DialogBox,.dialogTopCenter,.Caption;
+
+        .gwt-DialogBox {
+
+        }
+
+        .gwt-DialogBox.fade {
+            -webkit-transform: translate(0, -25%);
+            -ms-transform: translate(0, -25%);
+            transform: translate(0, -25%);
+            -webkit-transition: -webkit-transform 0.3s ease-out;
+            -moz-transition: -moz-transform 0.3s ease-out;
+            -o-transition: -o-transform 0.3s ease-out;
+            transition: transform 0.3s ease-out;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+            background-clip: padding-box;
+            outline: none;
+            clip: auto !important;
+        }
+
+        .dialogTopCenter {
+            cursor: pointer;
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+            min-height: 16px;
+        }
+
+        .Caption {
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 120%;
+            color: inherit;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .modalBody {
+            position: relative;
+            padding: 20px;
+        }
+
+        .modal-footer {
+            margin-top: 15px;
+            padding: 19px 20px 20px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .modal-footer:before,
+        .modal-footer:after {
+            content: " ";
+            display: table;
+        }
+
+        .modal-footer:after {
+            clear: both;
+        }
+
+
+
+
+    </ui:style>
+    <ui:with field="res" type='com.chat.client.bundels.Resources' />
+    <g:HTMLPanel>
+        <g:DialogBox ui:field="dialog"
+                     text="Login"
+
+                     animationEnabled="true"
+                     addStyleNames="{style.fade} {style.modal-content}">
+            <g:VerticalPanel
+                    spacing="4">
+                <g:FlowPanel addStyleNames="{style.modalBody}">
+                    <g:Label text="Username:"/>
+                    <g:TextBox ui:field="textBox" addStyleNames="{res.basic.formControl}"/>
+                </g:FlowPanel>
+                <g:FlowPanel addStyleNames="{style.modal-footer}">
+                    <g:Button ui:field="button"
+                              text="Logon"
+                              addStyleNames="{res.basic.btn} {res.basic.btnPrimary}"/>
+                </g:FlowPanel>
+            </g:VerticalPanel>
+        </g:DialogBox>
+    </g:HTMLPanel>
+</ui:UiBinder>
