@@ -30,8 +30,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;*/
 
 public class ChatEntryPoint {
-	/*
-	private ChatServiceAsync chatService;
+	/*private ChatServiceAsync chatService;
 	private CometClient cometClient;
 	
 	private String username;
@@ -240,6 +239,5 @@ public class ChatEntryPoint {
 		div.setAttribute("style", "color:" + color);
 		messages.getElement().appendChild(div);
 		scrollPanel.scrollToBottom();
-	}
-	*/
+	}*/
 }

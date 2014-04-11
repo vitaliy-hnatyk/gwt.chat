@@ -99,13 +99,15 @@
 }
 
 .textArea {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     left: 0;
     width: 100%;
     right: 0;
     bottom: 0;
     resize: none;
-    overflow: hidden;
+    overflow: auto;
     height: inherit !important;
+	padding-left: 1em;
+	padding-right: 1em;
 }

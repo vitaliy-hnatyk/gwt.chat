@@ -15,49 +15,34 @@ import com.google.gwt.user.client.ui.SimplePanel;
  */
 public class Chat implements EntryPoint {
 
-    ClientFactory clientFactory;
-    SimplePanel container = new SimplePanel();
-    private ChatServiceAsync chatService;
+	ClientFactory clientFactory;
+	SimplePanel container = new SimplePanel();
+	private ChatServiceAsync chatService;
 
-    static {
-        Resources.IMPL.basic().ensureInjected();
-    }
+	static {
+		Resources.IMPL.basic().ensureInjected();
+	}
 
-    @Override
-    public void onModuleLoad() {
+	@Override
+	public void onModuleLoad() {
 
-        clientFactory = GWT.create(ClientFactory.class);
-        chatService = clientFactory.getChatServices();
-        container.setHeight("100%");
-        container.setWidth("100%");
-        RootPanel.get().add(container, 0, 0);
-        bind();
+		clientFactory = GWT.create(ClientFactory.class);
+		chatService = clientFactory.getChatServices();
+		container.setHeight("100%");
+		container.setWidth("100%");
+		RootPanel.get().add(container, 0, 0);
+		doMain();
+		bind();
 
-        doMain();
-    }
 
-    private void doMain() {
-        new MainPresenterImpl(clientFactory.getMainView())
-                .go(container);
-    }
+	}
 
-    private void bind() {
-        chatService.getUsername(new AsyncCallback<String>() {
-            @Override
-            public void onSuccess(String username) {
-                if (username == null) {
-                    //showLogonDialog();
-                }
-                else {
-                    //loggedOn(username);
-                }
-            }
+	private void doMain() {
+		new MainPresenterImpl(clientFactory.getMainView())
+			.go(container);
+	}
 
-            @Override
-            public void onFailure(Throwable caught) {
-                //output(caught.toString(), "red");
-                //showLogonDialog();
-            }
-        });
-    }
+	private void bind() {
+
+	}
 }
