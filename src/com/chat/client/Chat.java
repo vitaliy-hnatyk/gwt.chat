@@ -2,11 +2,8 @@ package com.chat.client;
 
 import com.chat.client.bundels.Resources;
 import com.chat.client.presenters.impl.MainPresenterImpl;
-import com.chat.shared.ChatServiceAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.StyleInjector;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -17,7 +14,7 @@ public class Chat implements EntryPoint {
 
 	ClientFactory clientFactory;
 	SimplePanel container = new SimplePanel();
-	private ChatServiceAsync chatService;
+	private ChatRoomServiceAsync chatService;
 
 	static {
 		Resources.IMPL.basic().ensureInjected();

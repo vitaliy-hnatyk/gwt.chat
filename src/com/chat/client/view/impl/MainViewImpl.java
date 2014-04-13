@@ -20,7 +20,7 @@ public class MainViewImpl extends Composite implements MainView {
 
 	public MainViewImpl() {
 		initWidget(chatPlace);
-
+        chatPlace.setVisible(false);
 		bind();
 	}
 
@@ -35,6 +35,7 @@ public class MainViewImpl extends Composite implements MainView {
 				if (!loginDialog.getText().equals("")) {
 					presenter.login(loginDialog.getText());
 					loginDialog.hide();
+                    chatPlace.setVisible(true);
 				}
 			}
 		});
@@ -44,8 +45,9 @@ public class MainViewImpl extends Composite implements MainView {
 		chatPlace.getSendButton().addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent clickEvent) {
-				if(!chatPlace.getMessage().equals(""))
-					presenter.sendMessage(chatPlace.getMessage());
+                String mess = chatPlace.getMessage();
+				if(!mess.equals(""))
+					presenter.sendMessage(mess);
 			}
 		});
 	}
@@ -60,7 +62,12 @@ public class MainViewImpl extends Composite implements MainView {
 		chatPlace.setMessages(text,color);
 	}
 
-	@Override
+    @Override
+    public void setUser(String username) {
+        chatPlace.getUserName().setText(username);
+    }
+
+    @Override
 	public void showLogin() {
 		loginDialog.show();
 	}

@@ -3,17 +3,10 @@
     <ui:style>
         @external .gwt-DialogBox,.dialogTopCenter,.Caption;
 
-        .gwt-DialogBox {
-
-        }
-
         .gwt-DialogBox.fade {
             -webkit-transform: translate(0, -25%);
-            -ms-transform: translate(0, -25%);
             transform: translate(0, -25%);
             -webkit-transition: -webkit-transform 0.3s ease-out;
-            -moz-transition: -moz-transform 0.3s ease-out;
-            -o-transition: -o-transform 0.3s ease-out;
             transition: transform 0.3s ease-out;
         }
 
@@ -48,6 +41,7 @@
         .modalBody {
             position: relative;
             padding: 20px;
+            width: 400px;
         }
 
         .modal-footer {
@@ -67,9 +61,6 @@
             clear: both;
         }
 
-
-
-
     </ui:style>
     <ui:with field="res" type='com.chat.client.bundels.Resources' />
     <g:HTMLPanel>
@@ -79,7 +70,7 @@
                      animationEnabled="true"
                      addStyleNames="{style.fade} {style.modal-content}">
             <g:VerticalPanel
-                    spacing="4">
+                    spacing="4" >
                 <g:FlowPanel addStyleNames="{style.modalBody}">
                     <g:Label text="Username:"/>
                     <g:TextBox ui:field="textBox" addStyleNames="{res.basic.formControl}"/>

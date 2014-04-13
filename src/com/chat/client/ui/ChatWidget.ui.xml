@@ -1,57 +1,110 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-	<ui:style>
-		.main {
-			flex: auto;
-			height: 100%;
-			display: flex;
-			width: 100%;
-			flex-direction: row;
-		}
+    <ui:style>
+        .main {
+            flex: auto;
+            height: 100%;
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+        }
 
-		.center {
-			flex: auto;
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-		}
+        .center {
+            flex: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-		.messBox {
-			flex: auto;
-			position: relative;
-			min-height: 200px;
-		}
+        .messBox {
+            flex: auto;
+            position: relative;
+            min-height: 200px;
+        }
 
-		.inputBox {
-			height: 80px;
-		}
+        .inputBox {
+            height: 80px;
 
-		.right {
-			width: 300px;
-		}
+        }
 
+        .right {
+            width: 300px;
+            position: relative;
+            min-height: 200px;
+        }
 
-	</ui:style>
-	<ui:with field="res" type='com.chat.client.bundels.Resources'/>
-	<g:HTMLPanel addStyleNames="{style.main}">
-		<div class="{style.center}">
-			<div class="{style.messBox}">
-				<g:ScrollPanel ui:field="scrollPanel"
-				               addStyleNames="{res.basic.textArea}"
-					>
-					<g:HTML ui:field="messagesHtml"></g:HTML>
-				</g:ScrollPanel>
-			</div>
-			<div class="{style.inputBox}">
-				<g:TextBox ui:field="messageForm"
-				           addStyleNames="{res.basic.formControl}"/>
-				<g:Button ui:field="sendButton"
-				          text="Send"
-				          addStyleNames="{res.basic.btn} {res.basic.btnPrimary}"/>
-			</div>
-		</div>
-		<div class="{style.right}">
-			<g:ListBox addStyleNames="{res.basic.formControl}"/>
-		</div>
-	</g:HTMLPanel>
+        .doubleSize {
+            font-size: 200%;
+            height: inherit !important;
+        }
+
+        .sendForm {
+            width: 80%;
+            float: left;
+
+        }
+
+        .sendButton {
+            font-size: 200%;
+            float: right;
+            width: 20%;
+            height: inherit !important;
+        }
+
+        .box {
+            padding: 10px;
+        }
+
+        .username {
+            display: inline;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        .placeRoom {
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 3px solid #e4e9ee;
+            background-color: #fdf7f7;
+            border-color: #d1d6d9;
+            display: block;
+            bottom: 70px;
+            top: 30px;
+        }
+
+        .addRoom {
+            position: absolute;
+            bottom: 30px;
+        }
+    </ui:style>
+    <ui:with field="res" type='com.chat.client.bundels.Resources'/>
+    <g:HTMLPanel addStyleNames="{style.main}">
+        <div class="{style.center}">
+            <div class="{style.messBox}">
+                <g:ScrollPanel ui:field="scrollPanel"
+                               addStyleNames="{res.basic.textArea}"
+                        >
+                    <g:HTML ui:field="messagesHtml" />
+                </g:ScrollPanel>
+            </div>
+            <div class="{style.inputBox}">
+                <div class="{style.box}">
+                <g:TextBox ui:field="messageForm"
+                           addStyleNames="{res.basic.formControl} {style.doubleSize} {style.sendForm}"/>
+                <g:Button ui:field="sendButton"
+                          text="Send"
+                          addStyleNames="{res.basic.btn} {res.basic.btnPrimary} {style.sendButton}"/>
+            </div>
+            </div>
+        </div>
+        <div class="{style.right}">
+            User: <g:Label ui:field="userName"  addStyleNames="{style.username}"/><br />
+            Rooms:
+            <g:ScrollPanel
+                addStyleNames="{res.basic.textArea} {style.placeRoom}">
+                <g:FlowPanel ui:field="roomHtml" />
+            </g:ScrollPanel>
+            <g:Button text="Add Room" ui:field="addRoom" addStyleNames="{res.basic.btn} {style.addRoom}" />
+        </div>
+    </g:HTMLPanel>
 </ui:UiBinder>

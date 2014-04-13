@@ -12,41 +12,59 @@ import com.google.gwt.user.client.ui.*;
  * Created by asus on 10.04.2014.
  */
 public class ChatWidget extends Composite {
-	interface ChatWidgetUiBinder extends UiBinder<HTMLPanel, ChatWidget> {
-	}
+    interface ChatWidgetUiBinder extends UiBinder<HTMLPanel, ChatWidget> {
+    }
 
-	private static ChatWidgetUiBinder uiBinder = GWT.create(ChatWidgetUiBinder.class);
+    private static ChatWidgetUiBinder uiBinder = GWT.create(ChatWidgetUiBinder.class);
 
-	@UiField
-	HTML messagesHtml;
+    @UiField
+    HTML messagesHtml;
 
-	@UiField
-	ScrollPanel scrollPanel;
+    @UiField
+    ScrollPanel scrollPanel;
 
-	@UiField
-	Button sendButton;
+    @UiField
+    Button sendButton;
 
-	@UiField
-	TextBox messageForm;
+    @UiField
+    TextBox messageForm;
+    @UiField
+    FlowPanel roomHtml;
+    @UiField
+    Label userName;
+    @UiField
+    Button addRoom;
 
-	public ChatWidget() {
-		initWidget(uiBinder.createAndBindUi(this));
-		scrollPanel.getElement().getFirstChildElement().getStyle().setPosition(Style.Position.ABSOLUTE);
-	}
+    public ChatWidget() {
+        initWidget(uiBinder.createAndBindUi(this));
+        scrollPanel.getElement().getFirstChildElement().getStyle().setPosition(Style.Position.ABSOLUTE);
+    }
 
-	public String getMessage(){
-		return messageForm.getValue();
-	}
+    public String getMessage() {
+        String mes = messageForm.getValue();
+        messageForm.setValue("");
+        return mes;
+    }
 
-	public Button getSendButton() {
-		return sendButton;
-	}
+    public Label getUserName() {
+        return userName;
+    }
 
-	public void setMessages(String text, String color) {
-		DivElement div = Document.get().createDivElement();
-		div.setInnerText(text);
-		div.setAttribute("style", "color:" + color);
-		messagesHtml.getElement().appendChild(div);
-		scrollPanel.scrollToBottom();
-	}
+    public void addRoom(String roomName) {
+        Anchor an = new Anchor(roomName);
+        roomHtml.add(an);
+
+    }
+
+    public Button getSendButton() {
+        return sendButton;
+    }
+
+    public void setMessages(String text, String color) {
+        DivElement div = Document.get().createDivElement();
+        div.setInnerHTML(text);
+        div.setAttribute("style", "color:" + color);
+        messagesHtml.getElement().appendChild(div);
+        scrollPanel.scrollToBottom();
+    }
 }

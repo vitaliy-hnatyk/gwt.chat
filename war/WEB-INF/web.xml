@@ -7,20 +7,22 @@
 
 	<servlet>
 		<servlet-name>com.chat.Chat ChatService</servlet-name>
-		<servlet-class>com.chat.server.ChatServiceImpl</servlet-class>
+		<servlet-class>com.chat.server.ChatRoomServiceImpl</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>chatComet</servlet-name>
-		<servlet-class>net.zschech.gwt.comet.server.CometServlet</servlet-class>
-	</servlet>
+
 
 	<servlet-mapping>
 		<servlet-name>com.chat.Chat ChatService</servlet-name>
 		<url-pattern>/chat/chat</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>chatComet</servlet-name>
-		<url-pattern>/chat/comet</url-pattern>
-	</servlet-mapping>
+    <servlet>
+        <servlet-name>webSocket</servlet-name>
+        <servlet-class>com.chat.server.ChatSocketServletImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>webSocket</servlet-name>
+        <url-pattern>/chat/ws</url-pattern>
+    </servlet-mapping>
 </web-app>
