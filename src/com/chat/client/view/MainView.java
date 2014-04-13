@@ -9,4 +9,5 @@ public interface MainView extends IsWidget{
 	void hideLogin();
 	void setMessages(String text, String color);
     void setUser(String username);
+    void addRoom(String roomName);
 }

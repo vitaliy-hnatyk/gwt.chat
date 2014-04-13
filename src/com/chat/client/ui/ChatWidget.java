@@ -8,24 +8,18 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
 
-/**
+/*
  * Created by asus on 10.04.2014.
  */
 public class ChatWidget extends Composite {
-    interface ChatWidgetUiBinder extends UiBinder<HTMLPanel, ChatWidget> {
-    }
 
     private static ChatWidgetUiBinder uiBinder = GWT.create(ChatWidgetUiBinder.class);
-
     @UiField
     HTML messagesHtml;
-
     @UiField
     ScrollPanel scrollPanel;
-
     @UiField
     Button sendButton;
-
     @UiField
     TextBox messageForm;
     @UiField
@@ -34,7 +28,8 @@ public class ChatWidget extends Composite {
     Label userName;
     @UiField
     Button addRoom;
-
+    @UiField
+    TextBox inputRoom;
     public ChatWidget() {
         initWidget(uiBinder.createAndBindUi(this));
         scrollPanel.getElement().getFirstChildElement().getStyle().setPosition(Style.Position.ABSOLUTE);
@@ -50,10 +45,16 @@ public class ChatWidget extends Composite {
         return userName;
     }
 
-    public void addRoom(String roomName) {
-        Anchor an = new Anchor(roomName);
-        roomHtml.add(an);
+    public Button getAddRoom() {
+        return addRoom;
+    }
 
+    public FlowPanel getRoomHtml() {
+        return roomHtml;
+    }
+
+    public TextBox getInputRoom() {
+        return inputRoom;
     }
 
     public Button getSendButton() {
@@ -66,5 +67,8 @@ public class ChatWidget extends Composite {
         div.setAttribute("style", "color:" + color);
         messagesHtml.getElement().appendChild(div);
         scrollPanel.scrollToBottom();
+    }
+
+    interface ChatWidgetUiBinder extends UiBinder<HTMLPanel, ChatWidget> {
     }
 }

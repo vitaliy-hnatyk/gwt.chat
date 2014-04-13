@@ -2,7 +2,7 @@ package com.chat.client.core;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-/**
+/*
  * Created by asus on 12.04.2014.
  */
 public class WebSocketClient extends JavaScriptObject {

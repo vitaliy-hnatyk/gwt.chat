@@ -5,16 +5,6 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
-	<servlet>
-		<servlet-name>com.chat.Chat ChatService</servlet-name>
-		<servlet-class>com.chat.server.ChatRoomServiceImpl</servlet-class>
-	</servlet>
-
-
-	<servlet-mapping>
-		<servlet-name>com.chat.Chat ChatService</servlet-name>
-		<url-pattern>/chat/chat</url-pattern>
-	</servlet-mapping>
 
     <servlet>
         <servlet-name>webSocket</servlet-name>

@@ -24,13 +24,15 @@
 
         .inputBox {
             height: 80px;
-
         }
 
         .right {
             width: 300px;
             position: relative;
             min-height: 200px;
+            background-color: #f4f8fa;
+            padding: 20px;
+            border-left: 3px solid #5bc0de;
         }
 
         .doubleSize {
@@ -64,17 +66,30 @@
         .placeRoom {
             margin: 20px 0;
             padding: 20px;
-            border-left: 3px solid #e4e9ee;
-            background-color: #fdf7f7;
-            border-color: #d1d6d9;
             display: block;
-            bottom: 70px;
+            bottom: 80px;
             top: 30px;
+            right: 10px;
+            border-bottom: solid 1px rgb(204, 204, 204);
         }
 
         .addRoom {
             position: absolute;
-            bottom: 30px;
+            bottom: 10px;
+            right: 0;
+            left: 0;
+            padding: 10px;
+        }
+
+        .addButton {
+            margin-top: 5px;
+        }
+
+        @external .gwt-Anchor;
+        .roomHtml div .gwt-Anchor {
+            display: block !important;
+            color: black;
+            text-decoration: no-underline;
         }
     </ui:style>
     <ui:with field="res" type='com.chat.client.bundels.Resources'/>
@@ -84,27 +99,32 @@
                 <g:ScrollPanel ui:field="scrollPanel"
                                addStyleNames="{res.basic.textArea}"
                         >
-                    <g:HTML ui:field="messagesHtml" />
+                    <g:HTML ui:field="messagesHtml"/>
                 </g:ScrollPanel>
             </div>
             <div class="{style.inputBox}">
                 <div class="{style.box}">
-                <g:TextBox ui:field="messageForm"
-                           addStyleNames="{res.basic.formControl} {style.doubleSize} {style.sendForm}"/>
-                <g:Button ui:field="sendButton"
-                          text="Send"
-                          addStyleNames="{res.basic.btn} {res.basic.btnPrimary} {style.sendButton}"/>
-            </div>
+                    <g:TextBox ui:field="messageForm"
+                               addStyleNames="{res.basic.formControl} {style.doubleSize} {style.sendForm}"/>
+                    <g:Button ui:field="sendButton"
+                              text="Send"
+                              addStyleNames="{res.basic.btn} {res.basic.btnPrimary} {style.sendButton}"/>
+                </div>
             </div>
         </div>
         <div class="{style.right}">
-            User: <g:Label ui:field="userName"  addStyleNames="{style.username}"/><br />
+            User:
+            <g:Label ui:field="userName" addStyleNames="{style.username}"/>
+            <br/>
             Rooms:
             <g:ScrollPanel
-                addStyleNames="{res.basic.textArea} {style.placeRoom}">
-                <g:FlowPanel ui:field="roomHtml" />
+                    addStyleNames="{res.basic.textArea} {style.placeRoom}">
+                <g:FlowPanel ui:field="roomHtml"/>
             </g:ScrollPanel>
-            <g:Button text="Add Room" ui:field="addRoom" addStyleNames="{res.basic.btn} {style.addRoom}" />
+            <g:FlowPanel addStyleNames="{style.addRoom}">
+                <g:TextBox ui:field="inputRoom" addStyleNames="{res.basic.formControl}"/>
+                <g:Button text="Add Room" ui:field="addRoom" addStyleNames="{res.basic.btn} {style.addButton}"/>
+            </g:FlowPanel>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

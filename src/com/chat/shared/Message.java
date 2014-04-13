@@ -2,7 +2,7 @@ package com.chat.shared;
 
 import java.io.Serializable;
 
-/**
+/*
  * Created by asus on 10.04.2014.
  */
 public class Message implements Serializable {
@@ -14,7 +14,6 @@ public class Message implements Serializable {
 
     public Message() {
     }
-
 
     public String getRoom() {
         return room;
